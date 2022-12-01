@@ -61,6 +61,22 @@ class CarouselOptions {
   /// Defaults to false.
   final bool? enlargeCenterPage;
 
+  /// Determines if the adjacent pages should be rotated. If set to true,
+  /// the adjacent pages will be rotated by [rotationAngle] degrees.
+  ///
+  /// Defaults to false.
+  final bool? rotateSidePages;
+
+  /// Determines the rotation angle of adjacent pages.
+  final double rotationAngle;
+
+  /// Determines the translation offset of y axis of adjacent pages.
+  /// Defaults to 0.
+  /// This value is used to compensate the rotation of adjacent pages.
+  /// If you want to rotate the adjacent pages, you should set this value
+  /// to achieve the desired effect.
+  final double translationOffset;
+
   /// The axis along which the page view scrolls.
   ///
   /// Defaults to [Axis.horizontal].
@@ -136,6 +152,9 @@ class CarouselOptions {
     this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
     this.autoPlayCurve: Curves.fastOutSlowIn,
     this.enlargeCenterPage = false,
+    this.rotateSidePages = false,
+    this.rotationAngle = 0.0,
+    this.translationOffset = 0.0,
     this.onPageChanged,
     this.onScrolled,
     this.scrollPhysics,
@@ -165,6 +184,9 @@ class CarouselOptions {
           Duration? autoPlayAnimationDuration,
           Curve? autoPlayCurve,
           bool? enlargeCenterPage,
+          bool? rotateSidePages,
+          double? rotationAngle,
+          double? translationOffset,
           Function(int index, CarouselPageChangedReason reason)? onPageChanged,
           ValueChanged<double?>? onScrolled,
           ScrollPhysics? scrollPhysics,
@@ -191,6 +213,9 @@ class CarouselOptions {
             autoPlayAnimationDuration ?? this.autoPlayAnimationDuration,
         autoPlayCurve: autoPlayCurve ?? this.autoPlayCurve,
         enlargeCenterPage: enlargeCenterPage ?? this.enlargeCenterPage,
+        rotateSidePages: rotateSidePages ?? this.rotateSidePages,
+        rotationAngle: rotationAngle ?? this.rotationAngle,
+        translationOffset: translationOffset ?? this.translationOffset,
         onPageChanged: onPageChanged ?? this.onPageChanged,
         onScrolled: onScrolled ?? this.onScrolled,
         scrollPhysics: scrollPhysics ?? this.scrollPhysics,
